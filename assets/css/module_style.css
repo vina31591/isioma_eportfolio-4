@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 9997;
   transition: all 0.5s;
   padding: 0 15px;
-  background: #da57a3;
+  background: #34495e;
   overflow-y: auto;
 }
 #header .profile img {
@@ -256,8 +256,9 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 40px 20px;
   overflow: hidden;
+  background: #f1f1f1;
 }
 
 .section-bg {
@@ -934,7 +935,7 @@ section {
   bottom: 0;
   width: 300px;
   z-index: 9999;
-  background: #424714;
+  background: #2c3e50;
 }
 #footer .copyright {
   text-align: center;
@@ -960,21 +961,25 @@ section {
 
 .coll {
   padding: 1.5rem;
-  details {
-    border: 1px solid #ddd;
-    background: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: 0.35rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-		0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    
-    summary {
-      cursor: pointer;
-      padding: 1rem;
-      border-bottom: 1px solid #ddd;
-    }
-    div {
-      padding: 1rem 1.5rem;
-    }
-  }
+}
+.coll details {
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 1.5rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.coll details summary {
+  cursor: pointer;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.coll details div {
+  padding: 1rem 1.5rem;
+}
+.units{
+  padding: 0 20px 40px;
+}
+.container{
+  padding: 20px;
 }
