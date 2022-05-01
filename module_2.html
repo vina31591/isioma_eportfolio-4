@@ -1026,11 +1026,33 @@
                 <h2>Unit 7</h2>
               </summary>
               <h6><b>Risks and Standards</b></h6></br>
-              <div>Literally it does not mean anything. Lorem Ipsum is simply
-                dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since
-                the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book.</div></br>
+              <div>Risk is an essential part of any organisation this is because no organisatin can operate with risk.</div></br>
+
+
+              <h6><b>What Operating System does the web site utilise?</b></h6>
+              <p>Nmap  scan showed Linux </p>
+
+              <h6><b>What web server software is it running?</b></h6>
+              <p>Apache Server </p>
+
+              <h6><b>Is it running a CMS (Wordpress, Drupal, etc?)</b></h6>
+              <p>CMSeek says CMS is Serendipity version 2.3.5</p>
+              <h6><b>What protection does it have (CDN, Proxy, Firewall?)</b></h6>
+              <p>  Nikto scan showed;
+                Server banner has changed from ‘Apache’ to ‘imunify360-webshield/1.18’ which may suggest a WAF, load balancer or proxy </p>
+              <h6><b>Where is it hosted?/b></h6>
+                <p> InfoSploit points to a Geo-IP location as United states and Amsterdam, Netherlands</p>
+              <h6><b> Does it have any open ports?</b></h6>
+              <p> Yes - dmitry scanned 150 ports of which 129 were closed 
+                Open ports included 21, 25, 53, 80, 110, 143
+                Using Nmap, it showed the following ports open</p>
+              <h6><b>Does the site have any known vulnerabilities? Yes, it does have some vulnerabilities as shown</b></h6>
+              <p> Nikto scan showed;</p>
+                <li>The X-XSS protection header is not defined - cross site scripting vulnerability </li>
+                <li> X-powered-by header: W3 Total cache/0.9.4.6.4</li>
+                <li> Uncommon header ‘link’ found with contents https:tech-sourcery.co.uk/wp-json</li>
+                </p>
+              <h6><b>Risks and Standards</b></h6>
             </details>
           </div>
         </div><!-- End Unit 7 Section -->
