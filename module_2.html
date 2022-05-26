@@ -1531,29 +1531,80 @@
                         pre-installed virtual machines, containers, or storage. Misconfigurations, default accounts, unpatched flaws, unused access files, directories, and unprotected files, along with 
                         attackers' tactics to gain control of your systems, can be detected by automatic scanners. An attacker can exploit these flaws to gain access to certain system data or functionality, 
                         potentially compromising the whole system. As shown on the scan of allmytype.co.uk in Figure 2.</p>
-                      <h6><b>Figure 2 Open ports ( Nmap scan) </b></h6>
-                      <div class="col-md-5">
-                        <center>
-                        <img src="assets/img/unit 11A.jpg" alt="unit 11A.jpg" class="img-fluid">
-                      </center>
-                      <h6><b>Figure 3 - Open ports (dmitry)</b></h6>
                       
-                      <center>
- 
-                        <div class="col-md-6">
-                                       <img src="assets/img/unit 11B.jpg" alt="unit 11B.jpg" class="img-fluid">
-                               </center>
-                      <h6><b>Figure 3 - Open ports (dmitry) continued </b></h6>
+                        <h6><b>Figure 2. Open ports ( Nmap scan) </b></h6>
+
+                      <div class="col-md-5">
+                      
+                        <p><img src="assets/img/unit 11A.jpg" alt="unit 11A.jpg" class="img-fluid"></p>
+                      
+                             <h6><b>Figure 3 - Open ports (dmitry)</b></h6>
+                        
+                            <p><img src="assets/img/unit 11B.jpg" alt="unit 11B.jpg" class="img-fluid"></p>
+                              
+                              <h6><b>Figure 3 - Open ports (dmitry) continued </b></h6>
                       
                         
-                              <center>
- 
-                                      <div class="col-md-6">
-                                         <img src="assets/img/unit11 C.jpg" alt="unit11 C.jpg" class="img-fluid">
-                                               </center>
+                               
+                                      <p><img src="assets/img/unit11 C.jpg" alt="unit11 C.jpg" class="img-fluid"></p>
+                                               
+                                   
+                               <li> The website might be vulnerable if;</li>
+                               <p></p>
+                                <li> 1. There are no or incorrectly specified security configurations in any section of the application stack.</li>
+                                  <li> 2. Features that aren't required are enabled or installed (open ports, services, pages, accounts, or privileges)</li>
+                                    <li>3. usage of default passwords and accounts</li>
+                                      <li> 4. Error handling that reveals stack traces or other data which can provide useful information to an attacker</li>
+                                        <li> 5. The most recent security settings are either disabled or improperly configured.</li>
+                                          <li>6. Application servers, application frameworks (e.g., Struts, Spring, ASP.NET), libraries, and databases do not have their security settings configured to safe values.</li>
+                                            <li> 7. Software is updated or susceptible; systems are more vulnerable without a systematic application security configuration process.</li>
+                                </p>
+                      <h6><b>3.3.1 Mitigations</b></h6>
+                       <p> Installation processes that are secure should be implemented, including:</li>
+                       <li> 1. Establish a repeatable hardening procedure that can be implemented fast and efficiently in a secure environment. All environments should be established up the same way, with different credentials for each domain which should be automated to save time.</li>
+                      <li> 2. Retain a platform simple by eliminating unnecessary features, components, documentation, and samples. To minimise the attack surface, remove or do not install new features and frameworks that are not required.</li>
+                    <li>3. Implement a Patch Management process to review required updates and configuration changes.</li>
+                  <li> 4. implementation of segmentation, containerization, or cloud security groups, as segmented application design allows effective and secure separation between components or tenants (ACLs).</li>
+                        
+                <li> 5. To ensure the effectiveness of setups and settings across all contexts, an automated procedure should be used.</li>
+                        </p>
+
+                      <h6><b>3.4 Vulnerable and Outdated Components</b></h6>
 
 
-                      <h6><b>1.0 Introduction </b></h6>
+                  <p>  One of the top application security threats that web developers must address, according to the OWASP 2021, is vulnerable and obsolete components (OWASP, 2021).This 
+                    includes using out of support operation systems, databases, and applications as part of the website development and not ensuring identified vulnerabilities are patched.
+                    The Nikto scan (Figure 5) showed the website is running on an Apache server and uses the Imunify360 web server security suite. Due to being open source and multi-platform 
+                    (Vlad, 2022), Apache is one of the most popular choices of web server. In 2019, an update was released to patch CVE-2019-0211, which gave attackers full root access to the 
+                    server (Narang, 2019). In 2022, Apache released an update to address CVE-2022-23943, a denial-of-service vulnerability (Moussalli, 2022). The release of updates must be kept
+                     up with so as not to become susceptible to a  breach through a known vulnerability and ensure there is an appropriate process in place to alert the operations team for 
+                     critical patches so as not to cause a delay (Luszcz, 2018).
+                    Imunify360 offers website protection and web server security capabilities, including intrusion prevention and detection systems, network firewalls, antivirus protection,
+                    and patch management. Allmytype.co.uk uses Imunify 360, a security platform designed for web hosting servers. Researchers from Cisco's Talos unit discovered that Imunify360
+                     could exploit a high-severity vulnerability. A remote attacker can execute arbitrary code on a server using a specially crafted file. This has been reported to the vendor
+                      and is now patched in a new version, 5.11.3 (Kovacs,2021.3). </p>
+                      <h6><b>3.4.1 Mitigations</b></h6>
+                     <li> 1. Although the Apache version being used is unclear, the organisation must make sure it is patched to the latest version (2.4.46), which includes some security fixes.
+                    <li>2. Update with a version of Imunify360 at least 5.11.3 or higher.</li>
+
+
+
+                      <h6><b>3.5 Cross-Site Scripting (XSS)</b></h6>
+                      <p> The scan in figure 5 shows The X-XSS protection header is not defined. Data is sent to a web user as dynamic content without being validated to verify that it doesn't 
+                        contain malicious software. XSS attacks occur when an untrusted source like a web browser enters data into a web application without validation. Web browsers typically 
+                        receive malicious code in the form of JavaScript, but it can also be HTML, Flash, or any other code the browser can execute.
+                        Attacks using XSS are almost limitless, but they commonly involve sending private information to the attacker and redirecting it back to the victim. An XSS attacker may
+                         use the victim to access content controlled by the attacker or perform other malicious operations on the victim's machine while posing as the infected site itself. </p>
+                         <center>
+                         
+                         <div class="col-md-5"></div>
+                        
+                                         <p><img src="assets/img/unit 11D.jpg" alt="unit 11D.jpg" class="img-fluid"></p>
+                                 </center>
+                      
+                         <h6><b>3.4.1 Mitigations</b></h6>
+                      <h6><b>3.4.1 Mitigations</b></h6>
+                      <h6><b>3.4.1 Mitigations</b></h6>
                 </details>
                 <hr>
                 <details>
