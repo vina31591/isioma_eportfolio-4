@@ -1425,16 +1425,16 @@
                     <h6>Executive Summary for allmytype.co.uk Group 2</h6>
                   </summary>
                   
-                  <li><center>
-                    <h6><b> Elizabeth Cook</li>
-                      <h6><b> Jurbe Jubet</li>
-                        <h6><b>Isioma Vina Okafor-Tolofari.</li>
-                          <h6><b>Osarodion Samuel Tolofari</li>
+                  <center>
+                    <h6> Elizabeth Cook</li>
+                      <h6>Jurbe Jubet</li>
+                        <h6>Isioma Vina Okafor-Tolofari.</li>
+                          <h6>Osarodion Samuel Tolofari</li>
 
                   
                           </center></li>
 
-                  <h6><b>Contents</h6></li>
+                  <h6>Contents</h6></li>
                   <h6>1.0 Introduction</li>
                   <h6>2.0 Scanning Tools</li>
                   <h6>2.1 Kali Linux</li>
@@ -1460,9 +1460,83 @@
                    (Daud, 2015) discussed in the design document. </p>
                   2.0 Scanning Tools
                   Vulnerability scanning can be conducted through manual testing or available tools (Daud, 2014). For the scanning performed on allmytype.co.uk, several tools were reviewed and
-                   selected based on criteria that assessed the tools' ease of use, flexibility, reputation, licensing, and ease of installation.
+                   selected based on criteria that assessed the tools' ease of use, flexibility, reputation, licensing, and ease of installation.</p>
+                   <h6><b>2.1 Kali Linux </b></h6>
+                   <p>Kali Linux can be installed as a virtual machine on a device allowing users access to multiple applications and frameworks (Bhatt, 2018). While some of the tools offered 
+                     as part of the package are more complex and suited to experienced penetration testers, the variety available means there is also an offering for beginners with little
+                      knowledge of Kali or security testing (Leroux, 2020), making the tool as straightforward or as complex as the user requires. While downloading Kali Linux from their 
+                      website is not complicated, the user must first have some virtualisation  </p>
                   
-                  </p>
+                       <p> oftware to install Kali on, making the process more complex. For scanning allmytype.co.uk, Kali Linux was chosen to gain access to a range of tools. 
+                        Through Kali Linux we utilised Nikto, a command-line vulnerability scanner that scans for both security vulnerabilities and misconfigured web servers. Dmitry for port 
+                        scanning which is a good option for gathering as much information as possible about a host (Aar & Sharma, 2017). We combined this with Network Mapper (Nmap) a free 
+                        open-source tool (Kaur & Kaur, 2017), often used for network discovery and auditing by using IP packets to determine what hosts are available (Bhingardeve & Franklin, 
+                        2018).</p>
+
+                      <h6><b>2.2 Dmitry </b></h6>
+                      <p> We chose Dmitry from Kali for the information gathering scan because it can (as shown in the scan)
+                       <li> A. Obtain information about an IP address by using the WHOIS lookup system,</li>
+                       <li>B. Use the WHOIS tool to check the WHOIS information on a domain name, the Subdomain Finder to check the different records available, and so forth.</li>
+                       <li>  C.Detect email addresses within WHOIS records or the start of authoritative DNS records and perform port scanning and banner grabbing regarding found open ports by scouring 
+                        the web for 'low-hanging fruit' information.</li></p>
+
+                        <div class="col-md-5"></div>
+                        <center>
+                       <p> <img src="assets/img/unit 11.jpg" alt="unit 11.jpg" class="img-fluid"></p>
+                      </center>
+
+
+                      <h6><b>3.0 Vulnerabilities </b></h6>
+                      <p> Our initial design document explored a potential 12 vulnerabilities that the site may be susceptible to. Once appropriate vulnerability scanning tools were selected, 
+                        the vulnerabilities were explored, and the ones confirmed to exist are discussed in more detail throughout this report. We then used the Open Web Application Security 
+                        Project top 10 vulnerabilities (OWASP, 2021) to rate the vulnerability according to its most critical security risks to web applications (NGINX, 2022).</p>
+
+                      <h6><b>3.1 Broken Access Control </b></h6>
+
+                      <p> GDPR (2018) requires allmytype.co.uk to protect the integrity confidentiality and availability of personal data, access controls must be implemented to manage who has access to the data
+                         in allmytype.co.uk. Broken access control is up from fifth place in OWASP due to a number of notable Common Weakness Enumeration (CWEs). Information Disclosure to Unauthorised Personnel, 
+                         GWE-201: Inserting Sensitive Data into Sent Data, and GWE-352: Access to Sent Data by Unauthorised Personnel. Cross-Site Request Forgery (CSRF). A scan of allmytype.co.uk showed the 
+                         presence of the CSRF vulnerability which allows an attacker to force a user's web browser to conduct malicious activity on the site (Siddiqui & Verma, 2011).</p>
+                      
+                        These vulnerabilities include:
+                      <li> 1. Access should only be allowed for specific capabilities, roles, or users, but is open to everybody in violation of the concept of least privilege or deny by default. </li>
+                      <li> 2. Modifying the URL (parameter tampering or force browsing) or internal application state, or using an attack tool to manipulate API requests, to get around access control checks. </li>
+                      <li>3. By giving a unique identity, you can read or edit someone else's account </li></p>
+                      
+                      
+                        <h6><b>3.1.2 Mitigations </b></h6>
+                       <p> 1. Deny access by default.</li> 
+                       <li>  2. Log access control failures, alert admins when appropriate for example, repeated failed login attempts.</li> 
+                       <li>3. Implement access control mechanisms once and re-use them throughout the application. Access controls should enforce ownership rather than accept that the user is 
+                        permitted to create, read, update, or delete any record.</li> 
+                        <li> 4. Disable directory listing for the web server and ensure that backup files and file metadata are not present within the web root.</li> 
+                        <li> 5. Limit API and controller access to minimise the harm from automated attack tooling.</li> 
+                        <li> 6. After logging out, stateful session identifiers should be invalidated. Tokens based on stateless JWT are recommended to be short-lived in order to minimise the 
+                        window of opportunity for an attacker. The OAuth revoke access standards should be followed for longer-lived JWTs.</li> 
+                        </p>
+
+                      <h6><b>3.2 Cryptographic Failures</b></h6>
+                      <p> Article 32 of GDPR suggests using appropriate encryption to secure any personal information being stored or while in transit (GDPR, 2018). A Nikto scan of 
+                        allmytype.co.uk revealed the Transport Layer Security (TLS) certificate is encrypted, as shown in figure 5, using AEAD Advanced Encryption Standard (AES) with 256bit key
+                         in Galois/Counter mode (AES 256 GCM) and Secure Hash Algorithm 384 (SHA384) which is more secure than other algorithms like SHA-1 (TECHCOMMUNITY.MICROSOFT.COM, 2021). 
+                        AES encryption encrypts plaintext inputs and cryptographic keys and yields an encrypted block of byte data that is decrypted by the receiver with the same key. This AES 
+                        encryption supports the block cipher mode GCM which uses a cryptographic key of 128 or 256 bits in length (Google Cloud, N.D).
+                        Security Hash Algorithm 2 (SHA384) produces a hash value of 384 bits as a 96-digit hexadecimal number. This helps verify if a file has been altered (WEB Tools, N.D).
+                        Based on the above, the site is not likely to be vulnerable to SSL TLS attacks such as Advanced Persistent Malware, SSL Stripping Attacks, Man-in-the-Middle attacks,
+                         and brute force attacks and AES is known to be more resistant to the recent quantum attacks, which makes it a preferred encryption solution (Rao et al., 2017).
+                        </p>
+
+                      <h6><b>3.3 Security misconfiguration, improper error handling and open ports  </b></h6>
+                      <p> There can be security misconfigurations at any level of the application stack, including network services, platforms, web and application servers, databases, Frameworks, custom code, 
+                        pre-installed virtual machines, containers, or storage. Misconfigurations, default accounts, unpatched flaws, unused access files, directories, and unprotected files, along with 
+                        attackers' tactics to gain control of your systems, can be detected by automatic scanners. An attacker can exploit these flaws to gain access to certain system data or functionality, 
+                        potentially compromising the whole system. As shown on the scan of allmytype.co.uk in Figure 2.</p>
+                      <h6><b>Figure 2 Open ports ( Nmap scan) </b></h6>
+
+                      
+                      <h6><b>1.0 Introduction </b></h6>
+                      <h6><b>1.0 Introduction </b></h6>
+                      <h6><b>1.0 Introduction </b></h6>
                 </details>
                 <hr>
                 <details>
